@@ -1,0 +1,3 @@
+config tgedge
+	option 'cache_path' ''
+	option 'image_name' ''

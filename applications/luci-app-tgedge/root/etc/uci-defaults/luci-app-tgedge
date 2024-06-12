@@ -1,0 +1,14 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+    delete firewall.tgedge
+    set firewall.tgedge=rule
+    set firewall.tgedge.name="tgedge"
+    set firewall.tgedge.target="ACCEPT"
+    set firewall.tgedge.src="wan"
+    set firewall.tgedge.dest_port="1024-65535"
+    set firewall.tgedge.enabled="0"
+    commit firewall
+EOF
+
+exit 0
