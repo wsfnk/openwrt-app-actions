@@ -23,10 +23,10 @@ msgid "Status"
 msgstr "状态"
 
 msgid "TiGO Edge is running"
-msgstr "甜果容器云运行中"
+msgstr "甜果容器云 正在运行中"
 
 msgid "TiGO Edge is not running"
-msgstr "甜果容器云未运行"
+msgstr "甜果容器云 未运行"
 
 msgid "Open the TiGO Edge"
-msgstr "打开甜果容器云"
+msgstr "打开 甜果容器云"
