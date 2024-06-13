@@ -26,7 +26,7 @@ tgedge.default_image = function()
   if string.find(nixio.uname().machine, "aarch64") then
     return "registry.cn-hangzhou.aliyuncs.com/babi-public/byy-agent-ipes:arm64"
   else
-    return "onething1/tgedge:2.4.3"
+    return "registry.cn-hangzhou.aliyuncs.com/babi-public/byy-agent-ipes:amd64"
   end
 end
 
