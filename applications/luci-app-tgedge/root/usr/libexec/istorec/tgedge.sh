@@ -38,7 +38,7 @@ echo "args:
     -v /opt/moecdn/ipes/custom.yml:/tigocloud/ipes/var/db/ipes/happ-conf/custom.yml \
     -v /opt/moecdn/ipes/sn:/tigocloud/ipes/bin/ipes_sn \
     --net=host \
-    -v \"$path:/data0\""
+    -v \"$path:/data1\""
 
     #--restart=always \
   local tz="`uci get system.@system[0].zonename | sed 's/ /_/g'`"
