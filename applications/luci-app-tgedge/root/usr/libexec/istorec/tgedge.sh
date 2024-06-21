@@ -35,11 +35,13 @@ echo "args:
   local cmd="docker run --restart=unless-stopped -d \
     --cap-add SYS_RAWIO \
     --ulimit core=0 \
-    -v /opt/moecdn/ipes/custom.yml:/tigocloud/ipes/var/db/ipes/happ-conf/custom.yml \
-    -v /opt/moecdn/ipes/sn:/tigocloud/ipes/bin/ipes_sn \
+    -v /opt/moecdn/ipes/custom.yml:/root/ipes/var/db/ipes/happ-conf/custom.yml \
+    -v /opt/moecdn/ipes/sn:/root/ipes/bin/ipes_sn \
     --net=host \
     -v \"$path:/data1\""
 
+    #-v /opt/moecdn/ipes/custom.yml:/tigocloud/ipes/var/db/ipes/happ-conf/custom.yml \
+    #-v /opt/moecdn/ipes/sn:/tigocloud/ipes/bin/ipes_sn \
     #--restart=always \
   local tz="`uci get system.@system[0].zonename | sed 's/ /_/g'`"
   [ -z "$tz" ] || cmd="$cmd -e TZ=$tz"
