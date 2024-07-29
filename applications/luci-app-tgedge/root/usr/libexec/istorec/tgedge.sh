@@ -83,7 +83,7 @@ case ${ACTION} in
   ;;
   "rm")
     docker rm -f tgedge
-    #[ "$(uname -m)" = "aarch64" ] && docker rmi registry.cn-hangzhou.aliyuncs.com/babi-public/byy-agent-ipes:arm64
+    [ "$(uname -m)" = "aarch64" ] && docker rmi registry.cn-hangzhou.aliyuncs.com/babi-public/byy-agent-ipes:arm64
     [ "$(uname -m)" = "x86_64" ] && docker rmi registry.cn-hangzhou.aliyuncs.com/babi-public/byy-agent-ipes:amd64
     docker rmi $(docker images -f "dangling=true" -q)
     rm -rf $(cat /opt/moecdn/ipes/openwrt_cache_path)
