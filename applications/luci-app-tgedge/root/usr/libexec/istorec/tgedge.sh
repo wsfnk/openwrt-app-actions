@@ -43,6 +43,7 @@ echo "args:
     #-v /opt/moecdn/ipes/custom.yml:/tigocloud/ipes/var/db/ipes/happ-conf/custom.yml \
     #-v /opt/moecdn/ipes/sn:/tigocloud/ipes/bin/ipes_sn \
     #--restart=always \
+  echo $path > /opt/moecdn/ipes/openwrt_cache_path
   local tz="`uci get system.@system[0].zonename | sed 's/ /_/g'`"
   [ -z "$tz" ] || cmd="$cmd -e TZ=$tz"
 
@@ -82,6 +83,11 @@ case ${ACTION} in
   ;;
   "rm")
     docker rm -f tgedge
+    #[ "$(uname -m)" = "aarch64" ] && docker rmi registry.cn-hangzhou.aliyuncs.com/babi-public/byy-agent-ipes:arm64
+    [ "$(uname -m)" = "x86_64" ] && docker rmi registry.cn-hangzhou.aliyuncs.com/babi-public/byy-agent-ipes:amd64
+    docker rmi $(docker images -f "dangling=true" -q)
+    rm -rf $(cat /opt/moecdn/ipes/openwrt_cache_path)
+    #rm -rf "$path"
     rm /opt/moecdn/ipes -rf
     if [ "`uci -q get firewall.tgedge.enabled`" = 1 ]; then
       uci -q batch <<-EOF >/dev/null
