@@ -1,0 +1,14 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+    delete firewall.getlink
+    set firewall.getlink=rule
+    set firewall.getlink.name="getlink"
+    set firewall.getlink.target="ACCEPT"
+    set firewall.getlink.src="wan"
+    set firewall.getlink.dest_port="1024-65535"
+    set firewall.getlink.enabled="0"
+    commit firewall
+EOF
+
+exit 0
