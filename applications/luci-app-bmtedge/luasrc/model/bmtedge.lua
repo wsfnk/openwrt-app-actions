@@ -23,10 +23,12 @@ bmtedge.blocks = function()
 end
 
 bmtedge.default_image = function()
+  local dockeramd64 = "registry.cn-shanghai.aliyuncs.com/nsp-prod-1/public1:lsy-iaas-amd64-latest"
+  local dockerarm64 = "registry.cn-shanghai.aliyuncs.com/nsp-prod-1/public1:lsy-iaas-arm64-latest"
   if string.find(nixio.uname().machine, "x86_64") then
-    return "jinshanyun/jinshan-x86_64"
+    return dockeramd64
   else
-    return "jinshanyun/jinshan-arm64"
+    return dockerarm64
   end
 end
 

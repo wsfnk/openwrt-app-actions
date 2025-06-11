@@ -25,17 +25,15 @@ do_install() {
   docker rm -f bmtedge
 
   local cmd="docker run --restart=unless-stopped -d \
+    --init \
     --privileged \
     --network=host \
     --dns=127.0.0.1 \
     --dns=223.5.5.5 \
-    --tmpfs /run \
-    --tmpfs /tmp \
-    -v \"$path:/data/ksc1\" \
-    -v \"$path/containerd:/var/lib/containerd\" \
-    -e ksc_datadir=\"/data/ksc1\" \
+    -v \"$path:/data/lsy_cloud\" \
+    -e ksc_datadir=\"/data/lsy_cloud\" \
     -e ksc_net=\"$netdev\" \
-    -e ksc_machine_code=\"lsyK17032_$uid\" "
+    -e ksc_machine_code=\"lsyK18000_$uid\" "
 
   local tz="`uci get system.@system[0].zonename | sed 's/ /_/g'`"
   [ -z "$tz" ] || cmd="$cmd -e TZ=$tz"
@@ -90,10 +88,10 @@ EOF
     docker ${ACTION} bmtedge
   ;;
   "status")
-    docker ps --all -f 'name=bmtedge' --format '{{.State}}'
+    docker ps --all -f 'name=^/bmtedge$' --format '{{.State}}'
   ;;
   "port")
-    docker ps --all -f 'name=bmtedge' --format '{{.Ports}}' | grep -om1 '0.0.0.0:[0-9]*' | sed 's/0.0.0.0://'
+    docker ps --all -f 'name=^/bmtedge$' --format '{{.Ports}}' | grep -om1 '0.0.0.0:[0-9]*' | sed 's/0.0.0.0://'
   ;;
   *)
     usage

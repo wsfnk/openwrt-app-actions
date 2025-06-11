@@ -1,5 +1,15 @@
 #!/bin/sh
 
+ipv6_disable_nat() {
+	NAT6=`uci -q get firewall.nat6.reload`
+	if [ "$NAT6" = "1" ]; then
+		uci -q delete network.wan6.sourcefilter
+		uci -q delete firewall.nat6
+		uci commit firewall
+		/etc/init.d/firewall reload
+	fi
+}
+
 ipv6_dns_on() {
 	uci -q delete 'dhcp.@dnsmasq[0].filter_aaaa'
 }
@@ -8,6 +18,8 @@ ipv6_half_mode() {
 	uci -q batch <<-EOF >/dev/null
 		del network.wan.ipv6
 		del network.wan6.auto
+
+		delete network.lan.ip6class
 
 		del dhcp.wan6
 
@@ -19,6 +31,9 @@ ipv6_half_mode() {
 EOF
 	ipv6_dns_on
 }
+
+# disable ipv6 nat
+ipv6_disable_nat
 
 ipv6_half_mode
 
