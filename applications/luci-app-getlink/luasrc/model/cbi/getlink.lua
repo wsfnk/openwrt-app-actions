@@ -8,9 +8,9 @@ local m, s, o
 
 m = taskd.docker_map("getlink", "getlink", "/usr/libexec/istorec/getlink.sh",
 	translate("GETL Edge Node"),
-	"甜果云-(GETL Edge Node)：由 甜果云 推出的一款 基于OP路由器系统的 docker 容器镜像软件，通过在简单安装后即可快速加入甜果云，可根据用户每日的贡献量，按周结算收益回报。了解更多，请登录「<a href=\"https://www.tigocloud.cn/\" target=\"_blank\" >甜果云官网</a>」并查看<a href=\"https://tigocloud.feishu.cn/wiki/EqShweDN3iDA5IkJwkacJPwhnxe\" target=\"_blank\">「使用教程」</a>")
+	"GETL边缘节点-(GETL Edge Node)：由 GETL共享计算平台 推出的一款 基于OP路由器系统的 docker 容器镜像软件，通过在简单安装后即可快速加入GETL共享计算平台，可根据用户每日的贡献量，按周结算收益回报。了解更多，请登录「<a href=\"https://www.tigocloud.cn/\" target=\"_blank\" >GETL共享计算平台官网</a>」并查看<a href=\"https://tigocloud.feishu.cn/wiki/EqShweDN3iDA5IkJwkacJPwhnxe\" target=\"_blank\">「使用教程」</a>")
 
-s = m:section(SimpleSection, translate("Service Status"), translate("GETL Edge Node status:"), "注意甜果云会以超级权限运行！")
+s = m:section(SimpleSection, translate("Service Status"), translate("GETL Edge Node status:"), "注意 GETL边缘节点 会以超级权限运行！")
 s:append(Template("getlink/status"))
 
 s = m:section(TypedSection, "getlink", translate("Setup"), translate("The following parameters will only take effect during installation or upgrade:"))
