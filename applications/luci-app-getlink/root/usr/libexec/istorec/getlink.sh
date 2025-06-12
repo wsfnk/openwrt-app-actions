@@ -17,7 +17,7 @@ do_install() {
 echo "args:
         - /data/storage" > /opt/getlink/ipes/custom.yml
 
-  [ -z "$image_name" ] && image_name="registry.cn-hangzhou.aliyuncs.com/babi-public/byy-agent-ipes"
+  [ -z "$image_name" ] && image_name="registry.cn-hangzhou.aliyuncs.com/getlink/ipes"
   echo "docker pull ${image_name}"
   docker pull ${image_name}
   docker rm -f getlink
@@ -83,8 +83,8 @@ case ${ACTION} in
   ;;
   "rm")
     docker rm -f getlink
-    [ "$(uname -m)" = "aarch64" ] && docker rmi registry.cn-hangzhou.aliyuncs.com/babi-public/byy-agent-ipes:arm64
-    [ "$(uname -m)" = "x86_64" ] && docker rmi registry.cn-hangzhou.aliyuncs.com/babi-public/byy-agent-ipes:amd64
+    [ "$(uname -m)" = "aarch64" ] && docker rmi registry.cn-hangzhou.aliyuncs.com/getlink/ipes:arm64
+    [ "$(uname -m)" = "x86_64" ] && docker rmi registry.cn-hangzhou.aliyuncs.com/getlink/ipes:amd64
     docker rmi $(docker images -f "dangling=true" -q)
     rm -rf $(cat /opt/getlink/ipes/openwrt_cache_path)
     #rm -rf "$path"

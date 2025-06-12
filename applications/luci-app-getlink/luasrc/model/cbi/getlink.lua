@@ -21,8 +21,8 @@ local default_image = getlink_model.default_image()
 o = s:option(Value, "image_name", translate("镜像 Image").."<b>*</b>")
 o.rmempty = false
 o.datatype = "string"
-o:value("registry.cn-hangzhou.aliyuncs.com/babi-public/byy-agent-ipes:amd64", "registry.cn-hangzhou.aliyuncs.com/babi-public/byy-agent-ipes:amd64")
-o:value("registry.cn-hangzhou.aliyuncs.com/babi-public/byy-agent-ipes:arm64", "registry.cn-hangzhou.aliyuncs.com/babi-public/byy-agent-ipes:arm64")
+o:value("registry.cn-hangzhou.aliyuncs.com/getlink/ipes:amd64", "registry.cn-hangzhou.aliyuncs.com/getlink/ipes:amd64")
+o:value("registry.cn-hangzhou.aliyuncs.com/getlink/ipes:arm64", "registry.cn-hangzhou.aliyuncs.com/getlink/ipes:arm64")
 o.default = default_image
 
 local blks = getlink_model.blocks()

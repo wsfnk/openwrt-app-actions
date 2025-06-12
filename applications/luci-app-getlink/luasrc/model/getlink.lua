@@ -24,9 +24,9 @@ end
 
 getlink.default_image = function()
   if string.find(nixio.uname().machine, "aarch64") then
-    return "registry.cn-hangzhou.aliyuncs.com/babi-public/byy-agent-ipes:arm64"
+    return "registry.cn-hangzhou.aliyuncs.com/getlink/ipes:arm64"
   else
-    return "registry.cn-hangzhou.aliyuncs.com/babi-public/byy-agent-ipes:amd64"
+    return "registry.cn-hangzhou.aliyuncs.com/getlink/ipes:amd64"
   end
 end
 
